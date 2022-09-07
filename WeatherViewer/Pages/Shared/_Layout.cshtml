@@ -16,22 +16,41 @@
     <script src="https://kit.fontawesome.com/84c6af4e04.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg bg-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" asp-area="" asp-page="/Index">MN Weather Archive Project</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul>
-                    <li class="navbar-nav me-auto mb-2, mb-lg-0">
-                        <a class="nav-link" asp-area="" asp-page="/Index">Home</a>
-                    </li>
-                </ul>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-page="/Index">MN Weather Archive Project</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse d-sm-inline justify-content-between" id="navbarSupportedContent">
+                    <ul class="navbar-nav">
+                        <li class="navbar-nav me-auto mb-2, mb-lg-0">
+                            <a class="nav-link" asp-area="" asp-page="/Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-page="/Data/Summary">Last Two Days</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-page="/About">About Us</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="collapse" aria-expanded="false">Resources</a>
+                            <ul class="dropdown-menu">
+                                <li><span class="dropdown-item"><b>Our Process</b></span></li>
+                                <li><a class="dropdown-item" asp-area="" asp-page="/DataSource">Data Source</a></li>
+                                <li><hr class="dropdown-divider" /></li>
+                                <li><span class="dropdown-item">Learning Resources</span></li>
+                                <li><a class="dropdown-item" asp-area="" asp-page="/AboutMetars">What is a METAR?</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                
+                </div>
             </div>
-        </div>
-    </nav>
+        </nav>
+    </header>
     <div class="container-fluid">
         <main role="main" class="pb-3">
             @RenderBody()
