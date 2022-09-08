@@ -12,28 +12,29 @@
 
     <!-- JavaScript References-->
     <script src="~/lib/bootstrap/js/bootstrap.js" crossorigin="anonymous"></script>
+
     <!-- 3rd Party References -->
     <script src="https://kit.fontawesome.com/84c6af4e04.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3">
             <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-page="/Index">MN Weather Archive Project</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse d-sm-inline justify-content-between" id="navbarSupportedContent">
-                    <ul class="navbar-nav">
-                        <li class="navbar-nav me-auto mb-2, mb-lg-0">
-                            <a class="nav-link" asp-area="" asp-page="/Index">Home</a>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between" id="navbarSupportedContent">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link" asp-page="/Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-page="/Data/Summary">Last Two Days</a>
+                            <a class="nav-link" asp-page="/Data/Summary">Last Two Days</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-page="/About">About Us</a>
+                            <a class="nav-link" asp-page="/About">About Us</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="collapse" aria-expanded="false">Resources</a>
@@ -46,7 +47,6 @@
                             </ul>
                         </li>
                     </ul>
-                
                 </div>
             </div>
         </nav>
@@ -56,5 +56,15 @@
             @RenderBody()
         </main>
     </div>
+    <footer>
+        <div class="container">
+            &copy; 2022 - Minnesota Weather Archive Project, Caerwyn Software - <a asp-page="/Privacy">Privacy Information</a>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false) 
 </body>
 </html>
