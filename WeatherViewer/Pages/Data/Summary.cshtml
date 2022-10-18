@@ -1,0 +1,17 @@
+﻿@page
+@model WeatherViewer.Pages.Data.SummaryModel
+@{
+    var data = @Model.WeatherData;
+}
+
+if(string.IsNullOrEmpty(@Model.Message))
+{
+    <ejs-treegrid id="TreeGrid" childMapping="StationId" dataSource="@data">
+
+    </ejs-treegrid>
+}
+else
+{
+    <h4 style="color:red">@Model.Message</h4>
+}
+
