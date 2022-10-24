@@ -4,14 +4,19 @@
     var data = @Model.WeatherData;
 }
 
-if(string.IsNullOrEmpty(@Model.Message))
-{
-    <ejs-treegrid id="TreeGrid" childMapping="StationId" dataSource="@data">
-
-    </ejs-treegrid>
-}
-else
+@if(!string.IsNullOrEmpty(@Model.Message))
 {
     <h4 style="color:red">@Model.Message</h4>
 }
+
+<h4>Weather Summary From @DateTime.Now.AddDays(-2).Date to @DateTime.Now.Date</h4>
+    <ejs-treegrid id="TreeGrid" childMapping="StationId" dataSource="@Model.WeatherData" treeColumnIndex="0">
+        <e-treegrid-columns>
+            <e-treegrid-column field="StationId" headerText="Weather Station Id"></e-treegrid-column>
+            <e-treegrid-column field="ObservationTime" headerText = "Report Time"></e-treegrid-column>
+            <e-treegrid-column field="TempC" headerText="Temperature (Celsius)"></e-treegrid-column>
+            <e-treegrid-column field="PrecipIn" headerText="Rain/Snowfall (Inches)"></e-treegrid-column>
+            <e-treegrid-column field="AltimeterInHg" headerText="Air Pressure"></e-treegrid-column>
+        </e-treegrid-columns>
+    </ejs-treegrid>
 
