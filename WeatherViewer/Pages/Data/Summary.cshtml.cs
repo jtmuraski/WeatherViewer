@@ -5,6 +5,7 @@ using OpenWeatherSdk.Services;
 using OpenWeatherSdk.Models;
 using System.Collections.Generic;
 using System.Diagnostics;
+using WeatherViewer.Core;
 
 namespace WeatherViewer.Pages.Data
 {
