@@ -6,19 +6,21 @@ using OpenWeatherSdk.Models;
 using System.Collections.Generic;
 using System.Diagnostics;
 using WeatherViewer.Core;
+using WeatherViewer.Core.Models.SyncfusionModels;
+using WeatherViewer.Core.Services;
 
 namespace WeatherViewer.Pages.Data
 {
     public class SummaryModel : PageModel
     {
         public string Message { get; set; }
-        public IEnumerable<ShortSummary> WeatherData { get; set; }
+        public IEnumerable<ShortSummaryTreeGrid> WeatherData { get; set; }
         public void OnGet()
         {
             var weatherSummary = OpenWeatherActions.GetShortSummary();
             if(weatherSummary.ApiResponse == OpenWeatherSdk.Models.Enums.ApiCallStatus.Complete)
             {
-                WeatherData = weatherSummary.ShortSummaryCollection;
+                WeatherData = SyncFusionActions.CreateShortSummaryTreeGrid(weatherSummary.ShortSummaryCollection);
                 Debug.WriteLine("Number of records returned: " + weatherSummary.ShortSummaryCollection.Count);
                 Message = string.Empty;
             }

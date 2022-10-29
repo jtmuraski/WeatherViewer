@@ -16,9 +16,9 @@ namespace WeatherViewer.Core.Models.SyncfusionModels
     {
         public string StationId { get; set; }
         public List<ShortSummary> SummaryReports { get; set; }
-        public double AvgTemp { get; set; } 
-        public double AvgPrecip { get; set; }
-        public double AvgPressure { get; set; }
+        public double TempC { get; set; } 
+        public double PrecipIn { get; set; }
+        public double AltimeterInHg { get; set; }
 
         public ShortSummaryTreeGrid()
         {
@@ -34,9 +34,9 @@ namespace WeatherViewer.Core.Models.SyncfusionModels
         {
             StationId = stationId;
             SummaryReports = summaryCollection.Where(report => report.StationId == stationId).ToList();
-            AvgTemp = SummaryReports.Average(report => report.TempC);
-            AvgPrecip = SummaryReports.Average(report => report.PrecipIn);
-            AvgPressure = SummaryReports.Average(report => report.AltimeterInHg);
+            TempC = Math.Round(SummaryReports.Average(report => report.TempC), 2);
+            PrecipIn = Math.Round(SummaryReports.Average(report => report.PrecipIn),2);
+            AltimeterInHg = Math.Round(SummaryReports.Average(report => report.AltimeterInHg),2);
         }
     }
 }
