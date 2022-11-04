@@ -8,6 +8,7 @@ using System.Diagnostics;
 using WeatherViewer.Core;
 using WeatherViewer.Core.Models.SyncfusionModels;
 using WeatherViewer.Core.Services;
+using Syncfusion.EJ2.Charts;
 
 namespace WeatherViewer.Pages.Data
 {
@@ -15,12 +16,14 @@ namespace WeatherViewer.Pages.Data
     {
         public string Message { get; set; }
         public IEnumerable<ShortSummaryTreeGrid> WeatherData { get; set; }
+        public List<TimeLineData> summaryChartData { get; set; }
         public void OnGet()
         {
             var weatherSummary = OpenWeatherActions.GetShortSummary();
             if(weatherSummary.ApiResponse == OpenWeatherSdk.Models.Enums.ApiCallStatus.Complete)
             {
                 WeatherData = SyncFusionActions.CreateShortSummaryTreeGrid(weatherSummary.ShortSummaryCollection);
+                summaryChartData = SyncFusionActions.CreateSummaryChartData(weatherSummary.ShortSummaryCollection);
                 Debug.WriteLine("Number of records returned: " + weatherSummary.ShortSummaryCollection.Count);
                 Message = string.Empty;
             }
