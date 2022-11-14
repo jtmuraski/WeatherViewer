@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using WeatherViewer.Core.Models;
 using WeatherViewer.Core.Models.SyncfusionModels;
 using WeatherViewer.Core.Models.SyncfusionModels.ChartModels;
+using System.Diagnostics;
 
 namespace WeatherViewer.Core.Services
 {
@@ -27,13 +28,12 @@ namespace WeatherViewer.Core.Services
             List<string> summaryStations = data.Select(x => x.StationId).Distinct().ToList(); 
             foreach(var station in summaryStations)
             {
-                var seriesData = new TimeLineData();
-                seriesData.seriesName = station;
-                List<ShortSummary> stationData = data.Where(report => report.StationId == station).ToList();
+                var seriesData = new TimeLineData(station);
+                List<ShortSummary> stationData = data.Where(report => report.StationId == station).OrderBy(report => report.ObservationTime).ToList();
                 foreach (var report in stationData)
                 {
                     DateTime localTime = report.ObservationTime.ToLocalTime();
-                    seriesData.tempChartValues.Add(new TimePairValue()
+                    seriesData.TempChartValues.Add(new TimePairValue()
                     {
                         xTime = new DateTime(localTime.Year, localTime.Month, localTime.Day, localTime.Hour, 0, 0),
                         yValue = report.TempC

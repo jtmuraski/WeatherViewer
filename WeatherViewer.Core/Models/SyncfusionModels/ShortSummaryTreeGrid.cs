@@ -33,7 +33,7 @@ namespace WeatherViewer.Core.Models.SyncfusionModels
         public ShortSummaryTreeGrid(string stationId, List<ShortSummary> summaryCollection)
         {
             StationId = stationId;
-            SummaryReports = summaryCollection.Where(report => report.StationId == stationId).ToList();
+            SummaryReports = summaryCollection.Where(report => report.StationId == stationId).OrderBy(time => time.ObservationTime).ToList();
             TempC = Math.Round(SummaryReports.Average(report => report.TempC), 2);
             PrecipIn = Math.Round(SummaryReports.Average(report => report.PrecipIn),2);
             AltimeterInHg = Math.Round(SummaryReports.Average(report => report.AltimeterInHg),2);

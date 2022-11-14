@@ -11,7 +11,7 @@
 
 <h4>Weather Summary From @DateTime.Now.AddDays(-2).ToString("MM/dd/yyyy") to @DateTime.Now.ToString("MM/dd/yyyy")</h4>
 <div>
-    <ejs-chart id="summaryChart">
+    <ejs-chart id="summaryChart" onload="window.onChartLoad">
         <e-chart-primaryxaxis valueType="DateTime"
                               labelFormat="y"
                               intervalType="Hours",
@@ -20,7 +20,7 @@
         <e-series-collection>
             @foreach(var seriesData in Model.summaryChartData)
             {
-              <e-series name="@seriesData.seriesName" dataSource="@seriesData.tempChartValues" xName="xTime" yName="yValus" type="@Syncfusion.EJ2.Charts.ChartSeriesType.Line"></e-series>  
+              <e-series name="@seriesData.SeriesName" dataSource="@seriesData.TempChartValues" xName="xTime" yName="yValue" type="@Syncfusion.EJ2.Charts.ChartSeriesType.Line"></e-series>  
             }
         </e-series-collection>
     </ejs-chart>
