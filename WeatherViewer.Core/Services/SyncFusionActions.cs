@@ -39,8 +39,8 @@ namespace WeatherViewer.Core.Services
                         yValue = report.TempC
                     });
                 }
+                chartData.Add(seriesData);
             }
-            
             return chartData;
         }
     }
